@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title>Spotidora.fm</title>
+		<link rel="stylesheet" type="text/css" href="css/defaultStyle.css">
+		<link rel="stylesheet" type="text/css" href="css/sidebarStyle.css">
+		<link rel="stylesheet" type="text/css" href="css/circleTrack.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
+		<script type='text/javascript' src='//code.jquery.com/jquery-1.10.1.js'></script>
+		<script type='text/javascript' src="javascript/toggleMenuScript.js"></script>
+		<script type='text/javascript' src="/socket.io/socket.io.js"></script>
+		<script type='text/javascript' src="javascript/playerScript.js"></script>
+	</head>
+
+	<body>
+		<!--Sidebar Toggle-->
+		<div class="sidebar">
+			<div id="sidebar-toggle">
+				<span></span><span></span><span></span><span></span>
+			</div>
+			<!--Contains music search form, predefined playlists, and liked songs.
+				Enter on the form should display an additional window with results-->
+			<ul class="sidebar-list">
+				<li>
+					<input type="text" name="q" placeholder="Search..." id="searchBar" />
+					<ul class="results" id="pizza" />
+				</li>
+			</ul>
+		</div>
+		<!--Contains header, footer, and centered player-->
+		<div class="content">
+			<div id="headerWrapper">
+				<h3 id="headerFont" style="margin:auto">Spotidora.fm</h3>
+				<h3 id="userGreet">Hello User!</h3>
+				<!--Holds song information and writes it to the header-->
+				<div id="metaTagDiv"></div>
+			</div>
+			<!--Holds centered player buttons: Play/Pause Toggle, Restart, Skip, and Volume Control-->
+			<div id="mainPlayer">
+				<!--This is the circle bar-->
+				<div class="wrapper" data-anim="base wrapper">
+					<div class="circle" data-anim="base left"></div>
+					<div class="circle" data-anim="base right"></div>
+				</div>
+				<button id="playPauseButton"  class="fa fa-play"></button>
+				
+				<div class="buttonContainer"><button class="playerButton" id="backButton"><i class="fa fa-fast-backward"></i></button></div>
+				<div class="buttonContainer"><button class="playerButton" id="nextButton"><i class="fa fa-fast-forward"></i></button></div>
+				<div class="buttonContainer"><button class="playerButton" id="volumeDownInc"><i class="fa fa-volume-down"></i></button></div>
+				<div class="buttonContainer"><button class="playerButton" id="volumeUpInc"><i class="fa fa-volume-up"></i></button></div>
+			</div>
+
+			<!--Contains footer information: Timeline and currently a quick mute button.-->
+			<div id="playerWrapper">
+				<div id="audioplayer" class="size-med">
+				  	<div id="songSlider">
+				  		<div id="songTimeA">0:00</div>
+				  		<div id="songTimeB"></div>
+				  		<div id="trackProgress">
+				  			<div id="songTimeC">0:00</div>
+				  			<div id="songTimeD">&hellip;</div>
+				  		</div>
+				 	</div>
+				  	<div id="volume-container">
+				    	<div id="volume"><div id="volume-icon"></div><span>)</span><span>)</span><span>)</span></div>
+				    	<div id="volumeUp">+</div><br>
+				    	<div id="volumeDown">-</div>
+				    	<div id="volumeMeter"><div id="volumeStatus"></div></div>
+				  	</div>
+				</div>
+				<!--Holds the real audio tag that the former tags and javascript are manipulating-->
+				<div id="songWrapper">
+					<audio id="song"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
